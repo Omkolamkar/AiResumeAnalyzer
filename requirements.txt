@@ -1,0 +1,41 @@
+# Enhanced Requirements for AI Resume Analyzer
+# Core Streamlit and PDF processing
+streamlit==1.32.0
+pdf2image==1.17.0
+pdfplumber==0.11.4
+pytesseract==0.3.13
+
+# AI and ML libraries
+google-generativeai==0.3.2
+scikit-learn==1.3.2
+
+# HTTP requests and API handling
+requests==2.32.3
+
+# Environment and configuration management
+python-dotenv==1.0.1
+
+# Data processing and utilities
+pandas==2.1.4
+numpy==1.24.3
+
+# Optional: For enhanced matching algorithms
+# Uncomment if needed for more advanced NLP features
+# transformers==4.35.2
+# torch==2.1.2
+
+# Development and testing (optional)
+# pytest==7.4.3
+# black==23.11.0
+# flake8==6.1.0
+
+# Additional utilities
+pathlib2==2.3.7
+typing-extensions==4.8.0
+
+# Add to requirements.txt:
+sentence-transformers==2.2.2  # For semantic similarity
+PyPDF2==3.0.1  # For PDF encryption detection
+reportlab==4.0.4  # For PDF export
+aiohttp==3.9.1  # For async HTTP requests
+redis==5.0.1  # For distributed caching (optional)
