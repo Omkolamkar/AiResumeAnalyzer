@@ -46,7 +46,7 @@ class ResumeAnalyzer:
         try:
             validate_api_keys()
             genai.configure(api_key=api_config.google_api_key)
-            self.model = genai.GenerativeModel("gemini-1.5-flash")
+            self.model = genai.GenerativeModel("models/gemini-1.5-flash"
             logger.info("AI model initialized successfully")
         except Exception as e:
             logger.error(f"Failed to initialize AI model: {e}")
