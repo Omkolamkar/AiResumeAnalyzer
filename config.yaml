@@ -1,0 +1,10 @@
+model_list:
+  - model_name: gemini-1.5-flash
+    litellm_params:
+      model: google/gemini-1.5-flash
+      api_base: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+      api_key: "os.environ/GOOGLE_API_KEY"
+      extra_headers:
+        x-goog-api-key: "os.environ/GOOGLE_API_KEY"
+environment_variables:
+  GOOGLE_API_KEY: "AIzaSyADBWr2u9Dp5hBmIO2dffFRQiMimIHBS0I"
