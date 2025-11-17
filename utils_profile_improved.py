@@ -263,11 +263,14 @@ class ProfileExtractor:
             prompt = f"{ENHANCED_PROFILE_SYSTEM_PROMPT}\n{resume_text}\n"
             
             logger.info("Sending profile extraction request to Gemini")
-           response = genai.chat(
-    model="models/chat-bison-001",
-    messages=[{"role": "user", "content": prompt}]
-)
-result_text = response["candidates"][0]["content"][0]["text"]
+                       response = genai.chat(
+                model="models/chat-bison-001",
+                messages=[{"role": "user", "content": prompt}]
+            )
+            raw_text = response["candidates"][0]["content"][0]["text"]
+
+            json_str = self._clean_json_response(raw_text)
+            profile = json.loads(json_str)
 
             
             if not response or not response.text:
