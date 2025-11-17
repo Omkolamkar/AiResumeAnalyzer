@@ -3,7 +3,7 @@ import json
 import logging
 import re
 from typing import Dict, List, Optional, Any
-import google.generativeai as genai
+from google import genai
 from utils import retry_with_exponential_backoff, safe_execute
 from config import api_config
 
@@ -92,8 +92,8 @@ class ProfileExtractor:
                 logger.error("Google API key not configured")
                 return
                 
-            genai.configure(api_key=api_config.google_api_key)
-            self.model = genai.GenerativeModel("gemini-1.5-flash")
+            client = genai.Client(api_key=api_config.google_api_key)
+            self.model = client.models
             logger.info("Gemini model initialized successfully")
         except Exception as e:
             logger.error(f"Failed to initialize Gemini model: {e}")
@@ -263,7 +263,11 @@ class ProfileExtractor:
             prompt = f"{ENHANCED_PROFILE_SYSTEM_PROMPT}\n{resume_text}\n"
             
             logger.info("Sending profile extraction request to Gemini")
-            response = self.model.generate_content(prompt)
+            response = self.model.generate_content(
+    model="gemini-1.5-flash",
+    contents=prompt
+)
+
             
             if not response or not response.text:
                 logger.warning("Empty response from Gemini")
