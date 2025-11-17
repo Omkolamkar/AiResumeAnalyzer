@@ -47,7 +47,7 @@ class ResumeAnalyzer:
             if not api_config.google_api_key:
                 raise ValueError("Google API key not configured")
             genai.configure(api_key=api_config.google_api_key)
-            self.model = genai.GenerativeModel("models/gemini-pro")
+            self.model = genai.GenerativeModel("models/text-bison-001")
             logger.info("AI model initialized successfully")
         except Exception as e:
             logger.error(f"Failed to initialize AI model: {e}")
